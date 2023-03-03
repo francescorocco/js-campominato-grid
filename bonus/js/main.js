@@ -6,13 +6,18 @@
 const bigSquareDom = document.getElementById('big-square');
 let newButtonDom = document.getElementById('btn');
 
+let difficultyDom= document.getElementById('difficulty');
+
+
 newButtonDom.addEventListener('click',
     function(){
         bigSquareDom.innerHTML='';
 
-        for (let i = 0; i < 100; i++){
+        for (let i = 0; i < difficultyDom.value; i++){
 
-    const squareCreation = createNewSquare(i+1);
+    const squareCreation = createNewSquare(i+1, difficultyDom.value);
+
+    
 
     squareCreation.addEventListener('click',
     
@@ -28,10 +33,11 @@ newButtonDom.addEventListener('click',
 );
 
 
-function createNewSquare(number){
-    const squareCreation = document.createElement('div');
-    squareCreation.classList.add('square');
 
+function createNewSquare(number, number2){
+    const squareCreation = document.createElement('div');
+    squareCreation.classList.add(`d-${number2}`);
+    squareCreation.classList.add('square');
     squareCreation.append(number);
 
     return squareCreation;
